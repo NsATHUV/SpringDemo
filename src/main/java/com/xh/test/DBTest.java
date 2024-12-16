@@ -25,7 +25,7 @@ public class DBTest {
     }
 
     @Test
-    public void druid_Test() throws PropertyVetoException, SQLException {
+    public void druid_Test() throws SQLException {
         try (DruidDataSource ds = new DruidDataSource()) {
             ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
             ds.setUrl("jdbc:mysql://localhost:3306/test");
