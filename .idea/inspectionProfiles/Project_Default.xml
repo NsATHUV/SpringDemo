@@ -1,0 +1,23 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="SpringDemo" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="org.springframework:spring-context:5.0.0.RELEASE" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="固定在分支中" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
