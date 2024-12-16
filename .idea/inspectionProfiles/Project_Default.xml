@@ -6,16 +6,19 @@
       <option name="ignoredModules">
         <list>
           <option value="SpringDemo" />
+          <option value="SpringDemo" />
         </list>
       </option>
       <option name="ignoredPackages">
         <list>
           <option value="org.springframework:spring-context:5.0.0.RELEASE" />
+          <option value="org.testng:testng:6.14.2" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
           <option value="固定在分支中" />
+          <option value="不可利用" />
         </list>
       </option>
     </inspection_tool>
