@@ -1,5 +1,5 @@
 package com.xh.dao;
 
-public interface stuDao {
+public interface StuDao {
     void say();
 }

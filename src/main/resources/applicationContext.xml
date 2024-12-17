@@ -2,23 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--
-        「Bean 标签的基本配置」：
-               用于配置对象交给Spring来配置
-               默认情况下调用类中的无参构作方法，如果没有无参构造方法则创建不成功
-               基本属性：
-                    「id」Bean实例在Spring容器中的唯一标识符
-                    「class」Bean类的全路径
-                    「scope」对象的作用范围
-                            「singleton」默认值，单例模式，只实例化一次
-                            「prototype」多例的，Bean对象可实例化多次，当调用getBean()方法时实例化Bean
+    <!--
+            「Bean 标签的基本配置」：
+                   用于配置对象交给Spring来配置
+                   默认情况下调用类中的无参构作方法，如果没有无参构造方法则创建不成功
+                   基本属性：
+                        「id」Bean实例在Spring容器中的唯一标识符
+                        「class」Bean类的全路径
+                        「scope」对象的作用范围
+                                「singleton」默认值，单例模式，只实例化一次
+                                「prototype」多例的，Bean对象可实例化多次，当调用getBean()方法时实例化Bean
 
--->
-<!--    <bean id="stuDao" class="com.xh.dao.impl.stuDaoImpl" scope="prototype"/>-->
+    -->
+    <!--    <bean id="stuDao" class="com.xh.dao.impl.StuDaoImpl" scope="prototype"/>-->
 
-<!--    <bean id="stuDao" class="com.xh.statics.staticFactory" factory-method="createStuDao"/>-->
+    <!--    <bean id="stuDao" class="com.xh.statics.StaticFactory" factory-method="createStuDao"/>-->
 
+    <!--    <bean id="factoryBean" class="com.xh.statics.DYFactory"/>-->
+    <!--    <bean id="stuDao" factory-bean="factoryBean" factory-method="createStuDao" scope="prototype"/>-->
 
-    <bean id="factoryBean" class="com.xh.statics.DYFactory"/>
-    <bean id="stuDao" factory-bean="factoryBean" factory-method="createStuDao" scope="prototype"/>
+    <bean id="stuDao" class="com.xh.dao.impl.StuDaoImpl"/>
+    <bean id="stuService" class="com.xh.service.StuService">
+        <property name="stuDao" ref="stuDao"/>
+    </bean>
+
 </beans>

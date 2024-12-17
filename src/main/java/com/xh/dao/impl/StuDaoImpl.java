@@ -1,8 +1,8 @@
 package com.xh.dao.impl;
 
-import com.xh.dao.stuDao;
+import com.xh.dao.StuDao;
 
-public class stuDaoImpl implements stuDao {
+public class StuDaoImpl implements StuDao {
 
     @Override
     public void say() {
