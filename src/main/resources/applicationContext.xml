@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--
             「Bean 标签的基本配置」：
                    用于配置对象交给Spring来配置
@@ -21,9 +22,10 @@
     <!--    <bean id="factoryBean" class="com.xh.statics.DYFactory"/>-->
     <!--    <bean id="stuDao" factory-bean="factoryBean" factory-method="createStuDao" scope="prototype"/>-->
 
-    <bean id="stuDao" class="com.xh.dao.impl.StuDaoImpl"/>
-    <bean id="stuService" class="com.xh.service.StuService">
-        <property name="stuDao" ref="stuDao"/>
-    </bean>
-
+    <!--    <bean id="stuDao" class="com.xh.dao.impl.StuDaoImpl"/>-->
+    <!--    <bean id="stuService" class="com.xh.service.StuService">-->
+    <!--        <property name="stuDao" ref="stuDao"/>-->
+    <!--    </bean>-->
+    <context:component-scan base-package="com.xh.service"/>
+    <context:component-scan base-package="com.xh.dao"/>
 </beans>
