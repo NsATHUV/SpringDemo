@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--
             「Bean 标签的基本配置」：
                    用于配置对象交给Spring来配置
@@ -26,6 +27,46 @@
     <!--    <bean id="stuService" class="com.xh.service.StuService">-->
     <!--        <property name="stuDao" ref="stuDao"/>-->
     <!--    </bean>-->
+    <!--    组件扫描-->
     <context:component-scan base-package="com.xh.service"/>
     <context:component-scan base-package="com.xh.dao"/>
+    <context:component-scan base-package="com.xh.aspect"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="user" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!--    将切面类注入到Spring中-->
+    <bean id="aspect" class="com.xh.aspect.AspectBean"/>
+
+    <!--    开始配置AOP-->
+    <!--&lt;!&ndash;    <aop:config>&ndash;&gt;-->
+
+    <!--   定义切面-->
+    <!--        <aop:aspect id="ap" ref="aspect">-->
+
+    <!--        第一个*：表示任意返回值类型-->
+    <!--        第二个*：类名-->
+    <!--        第三个*：表示方法名-->
+    <!--        ( .. ) ：方法的参数-->
+    <!--            <aop:pointcut id="my_put" expression="execution(* com.xh.dao.impl.*.*(..))"/>-->
+    <!--            <aop:before method="doBefore" pointcut-ref="my_put"/>-->
+    <!--            <aop:after method="doAfter" pointcut-ref="my_put"/>-->
+    <!--            <aop:around method="doAround" pointcut-ref="my_put"/>-->
+    <!--            <aop:after-throwing method="doThrow" throwing="ex" pointcut-ref="my_put"/>-->
+
+    <!--        </aop:aspect>-->
+
+    <!--    </aop:config>-->
+
+    <!--    使用注解开发AOP-->
+    <aop:aspectj-autoproxy/>
 </beans>

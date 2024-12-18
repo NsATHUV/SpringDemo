@@ -36,18 +36,5 @@ public class StuTest {
         System.out.println(dao4);
     }
 
-    @Test
-    //测试JDBCTemplate
-    public void testJDBC() throws PropertyVetoException {
-        ComboPooledDataSource ds = new ComboPooledDataSource();
-        ds.setDriverClass("com.mysql.cj.jdbc.Driver");
-        ds.setJdbcUrl("jdbc:mysql://localhost:3306/test");
-        ds.setUser("root");
-        ds.setPassword("123456");
-
-        //创建JDBCTemplate对象
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(ds);
-        jdbcTemplate.update("insert into students values(?,?,?)", 1, "张三", 18);
-    }
 
 }
