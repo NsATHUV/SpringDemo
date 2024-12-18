@@ -10,4 +10,9 @@ public class StuDaoImpl implements StuDao {
     public void say() {
         System.out.println("好想玩GTA:VI !");
     }
+
+    @Override
+    public void sayToSomeone(String name) {
+        System.out.println("你好，" + name);
+    }
 }
