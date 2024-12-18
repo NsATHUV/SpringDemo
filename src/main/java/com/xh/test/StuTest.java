@@ -1,13 +1,10 @@
 package com.xh.test;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.xh.dao.StuDao;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.beans.PropertyVetoException;
 
 public class StuTest {
     private static ApplicationContext getContext() {
